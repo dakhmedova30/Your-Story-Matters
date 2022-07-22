@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    
+    <title>Your Story Matters</title>
+    <meta charset="utf-8" />
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	  <!-- link the webpage's stylesheet -->
+	  <link rel="stylesheet" href="/style.css" />
+
+	  <!-- link the webpage's JavaScript file -->
+	  <script src="/script.js" defer></script>
+
+  </head>
+  
+  <body>
+    
+    <center>
+      <h1 class="top">
+        Seek, Share, Support
+      </h1>
+        
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="research.html">Research</a>
+          </li>
+          <li>
+            <a href="support.html">Support</a>
+          </li>
+          <li>
+            <a href="news.html">News</a>
+          </li>
+          <li>
+            <a href="penpal.html">Pen Pal</a>
+          </li>
+          <li>
+            <a href="aboutus.html">About Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <br></br>
+      <h1 class="name">
+        PEN PAL
+      </h1>
+
+    <h2 class="description">
+      <b>
+      Are you currently struggling with mental health issues? Have you struggled with your mental health before? Here, you can make friends based on your interests and join our welcoming community of pen pals!
+      </b>
+    </h2>
+
+    </center>
+
+    <br></br>
+
+    <center>
+      <h2 class="description">
+        <b>
+          Fill out the form below and you will be paired with a pen pal shortly!
+        </b>
+      </h2>
+    </center>
+
+    <br></br>
+
+    <center>
+
+      <form id="penpal" name="google-sheet">
+        
+      <h2 id="myForm">  
+        <p><label for="fname">First Name:</label></p>
+      </h2>
+      <textarea id="fname" name="fname" placeholder="Enter your first name..." rows="1" cols="60" required></textarea>
+      <br>
+  
+      <h2 id="myForm">
+        <p><label for="lname">Last Name:</label></p>
+      </h2>
+      <textarea id="lname" name="lname" placeholder="Enter your last name..." rows="1" cols="60" required></textarea>
+      <br>
+  
+      <h2 id="myForm">
+        <p><label for="email">Email:</label></p>
+      </h2>
+      <textarea id="email" name="email" placeholder="Enter your email..." rows="1" cols="60" required></textarea>
+      <br>
+  
+      <h2 id="myForm">
+        <p><label for="interests">Interests:</label></p>
+      </h2>
+      <textarea id="interests" name="interests" placeholder="Enter your interests..." rows="4" cols="60" required></textarea>
+      <br>
+
+      <h2 id="myForm">
+        <div id="form_alerts"></div>
+      </h2>
+      
+      <button type="submit" onclick="">Submit</button>
+      <button type="reset" onclick="clearVals()">Reset</button>
+      </form>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbySj3oboTKVvvqEbbJIWWz4S5XkE0aBD-psdY0vKlXAxYfPt-9-V2fpIuYIj1u2se8Y/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div>Successfully submitted!</div>"))
+            .catch(error => $("#form_alerts").html("<div>There was an error, please try again.</div>"))
+        })
+        </script>
+      
+    </center>
+    <br>
+    
+  </body>
+</html>
